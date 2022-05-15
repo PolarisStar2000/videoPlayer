@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { RegisterValidators } from '../validators/register-validators';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -39,7 +40,7 @@ export class RegisterComponent {
   ]);
   showAlert = false;
   alertMessage = 'Please wait! Your account is being created.';
-  alertColor = 'blue';
+  alertColor = 'indigo';
   registerForm = new FormGroup({
     name: this.name,
     email: this.email,
@@ -47,7 +48,7 @@ export class RegisterComponent {
     password: this.password,
     confirm_password: this.confirm_password,
     phoneNumber: this.phoneNumber,
-  });
+  }, [RegisterValidators.match('password', 'confirm_password')]);
 
   async register() {
     this.showAlert = true;
