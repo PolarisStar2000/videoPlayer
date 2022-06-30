@@ -7,6 +7,7 @@ import { v4 as uuid } from 'uuid';
 import { last, switchMap } from 'rxjs';
 import { ClipService } from 'src/app/services/clip.service';
 import IClip from 'src/app/models/clip.model';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
@@ -36,6 +37,7 @@ export class UploadComponent implements OnDestroy {
     private storage: AngularFireStorage,
     private auth: AngularFireAuth,
     private clipsService: ClipService,
+    private router: Router,
   ) {
     this.auth.user.subscribe(user => this.user = user)
   }
@@ -80,7 +82,7 @@ export class UploadComponent implements OnDestroy {
         switchMap(() => clipRef.getDownloadURL())
       )
       .subscribe({
-        next: (url) => {
+        next: async (url) => {
           const clip: IClip = {
             uid: this.user?.uid!,
             displayName: this.user?.displayName!,
@@ -88,12 +90,16 @@ export class UploadComponent implements OnDestroy {
             fileName: `${clipFileName}.mp4`,
             url,
           }
-
-          this.clipsService.createClip(clip);
+          const clipDocRef = await this.clipsService.createClip(clip);
 
           this.alertColor = 'green';
           this.alertMsg = 'Success! Your clip is now ready to share with the world.'
           this.showPercentage = false;
+          setTimeout(() => {
+            this.router.navigate([
+              'clip', clipDocRef.id
+            ]);
+          }, 1000);
         },
         error: (error) => {
           this.uploadForm.enable();
