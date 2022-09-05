@@ -79,7 +79,7 @@ export class UploadComponent implements OnDestroy {
   async uploadFile() {
     this.uploadForm.disable();
     this.showAlert = true;
-    this.alertColor = 'indigo';
+    this.alertColor = 'blue';
     this.alertMsg = 'Please wait! Your clip is being uploaded.';
     this.inSubmission = true;
     this.showPercentage = true;

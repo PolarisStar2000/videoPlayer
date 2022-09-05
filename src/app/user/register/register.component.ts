@@ -42,7 +42,7 @@ export class RegisterComponent {
   ]);
   showAlert = false;
   alertMessage = 'Please wait! Your account is being created.';
-  alertColor = 'indigo';
+  alertColor = 'blue';
   registerForm = new UntypedFormGroup({
     name: this.name,
     email: this.email,
@@ -55,7 +55,7 @@ export class RegisterComponent {
   async register() {
     this.showAlert = true;
     this.alertMessage = 'Please wait! Your account is being created.';
-    this.alertColor = 'indigo';
+    this.alertColor = 'blue';
     this.inSubmission = true;
 
     try {
