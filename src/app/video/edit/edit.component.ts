@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import IClip from 'src/app/models/clip.model';
 import { ClipService } from 'src/app/services/clip.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -17,12 +17,12 @@ export class EditComponent implements OnInit, OnChanges, OnDestroy {
   alertMsg = 'Please wait! Updating clip';
   @Output() update = new EventEmitter();
 
-  clipID = new FormControl('');
-  title = new FormControl('', [
+  clipID = new UntypedFormControl('');
+  title = new UntypedFormControl('', [
     Validators.required,
     Validators.minLength(3),
   ]);
-  editForm = new FormGroup({
+  editForm = new UntypedFormGroup({
     title: this.title,
     id: this.clipID,
   })

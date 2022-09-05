@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { EmailTaken } from '../validators/email-taken';
 import { RegisterValidators } from '../validators/register-validators';
@@ -15,27 +15,27 @@ export class RegisterComponent {
   ) { }
 
   inSubmission = false;
-  name = new FormControl('', [
+  name = new UntypedFormControl('', [
     Validators.required,
     Validators.minLength(3),
   ]);
-  email = new FormControl('', [
+  email = new UntypedFormControl('', [
     Validators.required,
     Validators.email,
   ], [this.emailTaken.validate]);
-  age = new FormControl('', [
+  age = new UntypedFormControl('', [
     Validators.required,
     Validators.min(18),
     Validators.max(120),
   ]);
-  password = new FormControl('', [
+  password = new UntypedFormControl('', [
     Validators.required,
     Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@$!%*#?&^_-]{8,}$/)
   ]);
-  confirm_password = new FormControl('', [
+  confirm_password = new UntypedFormControl('', [
     Validators.required,
   ]);
-  phoneNumber = new FormControl('', [
+  phoneNumber = new UntypedFormControl('', [
     Validators.required,
     Validators.minLength(13),
     Validators.maxLength(13),
@@ -43,7 +43,7 @@ export class RegisterComponent {
   showAlert = false;
   alertMessage = 'Please wait! Your account is being created.';
   alertColor = 'indigo';
-  registerForm = new FormGroup({
+  registerForm = new UntypedFormGroup({
     name: this.name,
     email: this.email,
     age: this.age,
