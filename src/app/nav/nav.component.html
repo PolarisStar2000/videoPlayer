@@ -1,8 +1,8 @@
 <!-- Header -->
-<header id="header" class="bg-secondary">
+<header id="header" class="bg-black">
     <nav class="container mx-auto flex justify-start items-center py-8 px-4">
         <!-- App Name -->
-        <a class="text-3xl text-indigo-400 font-bold uppercase mr-4" routerLink="/">Clips</a>
+        <a class="text-3xl text-white font-bold uppercase mr-4" routerLink="/">Clips</a>
 
         <div class="flex flex-grow items-center">
             <!-- Primary Navigation -->
@@ -13,20 +13,22 @@
                 </li>
                 <ng-template #authLinks>
                     <li>
-                        <a class="px-2" routerLink="/manage" routerLinkActive="text-indigo-400"
+                        <a class="px-2" routerLink="/manage" routerLinkActive="text-stone-400"
                             [routerLinkActiveOptions]="{exact: true}">Manage</a>
                     </li>
                     <li>
-                        <a class="px-2" routerLink="/upload" routerLinkActive="text-indigo-400"
+                        <a class="px-2" routerLink="/upload" routerLinkActive="text-stone-400"
                             [routerLinkActiveOptions]="{exact: true}">Upload</a>
-                    </li>
-                    <li>
-                        <a class="px-2" href="#" (click)="auth.logout($event)">Logout</a>
                     </li>
                 </ng-template>
                 <li>
-                    <a class="px-2" routerLink="/about" routerLinkActive="text-indigo-400"
+                    <a class="px-2" routerLink="/about" routerLinkActive="text-stone-400"
                         [routerLinkActiveOptions]="{exact: true}">About</a>
+                </li>
+            </ul>
+            <ul class="flex flex-row ml-auto">
+                <li *ngIf="(auth.isAuthenticated$ | async)">
+                    <a class="px-2" href="#" (click)="auth.logout($event)">Logout</a>
                 </li>
             </ul>
         </div>
