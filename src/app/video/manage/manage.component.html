@@ -1,10 +1,12 @@
 <!-- Top Bar -->
-<section class="container mx-auto my-8 bg-secondary p-6">
+<section class="container mx-auto my-8 bg-black p-6">
     <div class="rounded relative flex justify-between">
-        <a routerLink="/upload" class="bg-indigo-400 text-white py-4 px-10 text-xl">Upload Videos</a>
+        <a routerLink="/upload"
+            class="bg-stone-800 text-white hover:bg-white hover:text-black py-4 px-10 text-xl">Upload Videos</a>
 
         <!-- Sort Videos -->
-        <select (change)="sortClips($event)" class="text-black px-8 text-xl outline-none appearance-none">
+        <select (change)="sortClips($event)"
+            class="bg-stone-800 hover:bg-white hover:text-black px-8 text-xl outline-none appearance-none">
             <option value="1" [selected]="videoOrder === '1'">Recent Uploads</option>
             <option value="2" [selected]="videoOrder === '2'">Oldest Uploads</option>
         </select>
@@ -14,9 +16,9 @@
 <!-- User's Video Section -->
 <div class="container mx-auto my-8">
     <!-- Video List -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         <div *ngFor="let clip of clips"
-            class="mt-6 rounded-tl-2xl rounded-br-2xl shadow-xl bg-secondary flex flex-col justify-start">
+            class="mt-6 rounded-tl-2xl rounded-br-2xl shadow-xl bg-black flex flex-col justify-start">
 
             <!-- Image -->
             <a href="#">
@@ -28,23 +30,23 @@
 
                 <!-- Link -->
                 <a [routerLink]="['/', 'clip', clip.docID]" class="font-bold mb-2">
-                    {{ clip.title }}
+                    <h2 class="truncate"> {{ clip.title }} </h2>
                 </a>
                 <a (click)="copyToClipboard($event, clip.docID)"
-                    class="bg-gray-400 text-white px-2 py-1 ml-2 text-sm rounded">
+                    class="bg-slate-300 text-black px-2 py-1 ml-2 text-sm rounded">
                     Copy Link
                 </a>
 
             </div>
 
             <!-- Actions -->
-            <div class="flex text-center text-2xl bg-gray-800 p-2 mt-auto">
+            <div class="flex text-center text-2xl bg-stone-800 p-2 mt-auto">
                 <a (click)="openModal($event, clip)" href="#"
-                    class="flex-1 p-2 border-right border-r-2 border-gray-700 transition hover:text-indigo-400">
+                    class="flex-1 p-2 border-right border-r-2 border-gray-700 transition hover:text-black">
                     <span class="material-icons text-base">build</span>
                 </a>
                 <a (click)="deleteClip($event, clip)" href="#"
-                    class="flex-1 p-2 rounded-br-2xl transition hover:text-indigo-400">
+                    class="flex-1 p-2 rounded-br-2xl transition hover:text-black">
                     <span class="material-icons text-base">delete</span>
                 </a>
             </div>

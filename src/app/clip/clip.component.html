@@ -1,9 +1,9 @@
 <!-- Main Content -->
-<section class="container mx-auto my-8 bg-secondary p-6">
+<section class="container mx-auto my-8 bg-black p-6">
     <div class="rounded relative flex flex-col">
         <!-- Title and Uploader -->
         <h1 class="font-bold mb-2 text-3xl">{{ clip?.title }}</h1>
-        <div class="text-gray-400 mb-6">
+        <div class="text-white mb-6">
             Uploaded By {{clip?.displayName}}
             <span>{{clip?.timestamp | fbTimestamp}}</span>
         </div>
@@ -19,7 +19,6 @@
 
 <!-- More Clips -->
 <div class="container mx-auto my-8">
-    <h2 class="mt-6 text-2xl">More Clips</h2>
-
+    <h2 class="text-center text-4xl grid mt-5 gap-2 items-center tracking-widest latest">More Clips</h2>
     <app-clips-list></app-clips-list>
 </div>

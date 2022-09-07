@@ -3,7 +3,7 @@
 
 /* Video.js CSS START */
 .vjs-theme-forest {
-    --vjs-theme-forest--primary: rgb(129, 140, 248);
+    --vjs-theme-forest--primary: gray;
 }
 
 .vjs-theme-forest.vjs-big-play-button:focus,

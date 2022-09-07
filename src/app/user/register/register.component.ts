@@ -42,7 +42,7 @@ export class RegisterComponent {
   ]);
   showAlert = false;
   alertMessage = 'Please wait! Your account is being created.';
-  alertColor = 'blue';
+  alertColor = 'sky';
   registerForm = new UntypedFormGroup({
     name: this.name,
     email: this.email,
@@ -55,7 +55,7 @@ export class RegisterComponent {
   async register() {
     this.showAlert = true;
     this.alertMessage = 'Please wait! Your account is being created.';
-    this.alertColor = 'blue';
+    this.alertColor = 'sky';
     this.inSubmission = true;
 
     try {
@@ -63,12 +63,12 @@ export class RegisterComponent {
     } catch (error) {
       console.error(error);
       this.alertMessage = 'An unexpected error occured. Please try again later';
-      this.alertColor = 'red';
+      this.alertColor = 'rose';
       this.inSubmission = false;
       return;
     }
     this.alertMessage = 'Success! Your account has been created.';
-    this.alertColor = 'green';
+    this.alertColor = 'emerald';
 
   }
 }

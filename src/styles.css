@@ -11,10 +11,6 @@ body {
   font-size: inherit;
 }
 
-.bg-secondary {
-  background-color: #283046;
-}
-
 .cube {
   position: absolute;
   top: 100%;

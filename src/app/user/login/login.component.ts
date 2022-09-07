@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   };
   showAlert = false;
   alertMsg = 'Please wait! We are logging you in';
-  alertColor = 'blue';
+  alertColor = 'sky';
   inSubmission = false;
   constructor(private auth: AngularFireAuth) { }
 
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   async login() {
     this.showAlert = true;
     this.alertMsg = 'Please wait! We are logging you in';
-    this.alertColor = 'blue';
+    this.alertColor = 'sky';
     this.inSubmission = true;
     try {
       await this.auth.signInWithEmailAndPassword(
@@ -32,13 +32,13 @@ export class LoginComponent implements OnInit {
     } catch (e) {
       this.inSubmission = false;
       this.alertMsg = 'An unexpected error occured. Please try again later.';
-      this.alertColor = 'red';
+      this.alertColor = 'rose';
 
       console.log(e);
       return;
     }
 
     this.alertMsg = 'Success! You are now logged in.';
-    this.alertColor = 'green';
+    this.alertColor = 'emerald';
   }
 }

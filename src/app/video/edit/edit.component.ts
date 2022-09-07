@@ -13,7 +13,7 @@ export class EditComponent implements OnInit, OnChanges, OnDestroy {
   @Input() activeClip: IClip | null = null;
   inSubmission = false;
   showAlert = false;
-  alertColor = 'blue';
+  alertColor = 'sky';
   alertMsg = 'Please wait! Updating clip';
   @Output() update = new EventEmitter();
 
@@ -55,7 +55,7 @@ export class EditComponent implements OnInit, OnChanges, OnDestroy {
     }
     this.inSubmission = true;
     this.showAlert = true;
-    this.alertColor = 'blue';
+    this.alertColor = 'sky';
     this.alertMsg = 'Please wait! Updating clip.';
 
     try {
@@ -63,7 +63,7 @@ export class EditComponent implements OnInit, OnChanges, OnDestroy {
         this.clipID.value, this.title.value);
     } catch (e) {
       this.inSubmission = false;
-      this.alertColor = 'red';
+      this.alertColor = 'rose';
       this.alertMsg = 'Something went wrong. Try again later';
       return;
     }
@@ -71,7 +71,7 @@ export class EditComponent implements OnInit, OnChanges, OnDestroy {
     this.update.emit(this.activeClip);
 
     this.inSubmission = false;
-    this.alertColor = 'green';
+    this.alertColor = 'emerald';
     this.alertMsg = 'Success';
   }
 }

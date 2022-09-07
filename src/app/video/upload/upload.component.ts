@@ -19,7 +19,7 @@ export class UploadComponent implements OnDestroy {
   file: File | null = null;
   nextStep = false;
   showAlert = false;
-  alertColor = 'blue';
+  alertColor = 'sky';
   alertMsg = 'Please wait! Your clip is being uploaded.';
   inSubmission = false;
   percentage = 0;
@@ -79,7 +79,7 @@ export class UploadComponent implements OnDestroy {
   async uploadFile() {
     this.uploadForm.disable();
     this.showAlert = true;
-    this.alertColor = 'blue';
+    this.alertColor = 'sky';
     this.alertMsg = 'Please wait! Your clip is being uploaded.';
     this.inSubmission = true;
     this.showPercentage = true;
@@ -137,7 +137,7 @@ export class UploadComponent implements OnDestroy {
           }
           const clipDocRef = await this.clipsService.createClip(clip);
 
-          this.alertColor = 'green';
+          this.alertColor = 'emerald';
           this.alertMsg = 'Success! Your clip is now ready to share with the world.'
           this.showPercentage = false;
           setTimeout(() => {
@@ -149,8 +149,8 @@ export class UploadComponent implements OnDestroy {
         error: (error) => {
           this.uploadForm.enable();
 
-          this.alertColor = 'red';
-          this.alertMsg = 'Uplod failed! Please try again later.';
+          this.alertColor = 'rose';
+          this.alertMsg = 'Upload failed! Please try again later.';
           this.inSubmission = true;
           this.showPercentage = false;
           console.error(error);
