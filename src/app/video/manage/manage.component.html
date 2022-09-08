@@ -1,12 +1,12 @@
 <!-- Top Bar -->
 <section class="container mx-auto my-8 bg-black p-6">
     <div class="rounded relative flex justify-between">
-        <a routerLink="/upload"
-            class="bg-stone-800 text-white hover:bg-white hover:text-black py-4 px-10 text-xl">Upload Videos</a>
+        <a routerLink="/upload" class="bg-stone-800 text-white hover:bg-white hover:text-black py-4 px-10">Upload
+            Videos</a>
 
         <!-- Sort Videos -->
         <select (change)="sortClips($event)"
-            class="bg-stone-800 hover:bg-white hover:text-black px-8 text-xl outline-none appearance-none">
+            class="bg-stone-800 hover:bg-white hover:text-black px-8 outline-none appearance-none">
             <option value="1" [selected]="videoOrder === '1'">Recent Uploads</option>
             <option value="2" [selected]="videoOrder === '2'">Oldest Uploads</option>
         </select>
