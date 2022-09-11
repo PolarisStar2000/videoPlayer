@@ -13,6 +13,7 @@ import IClip from '../models/clip.model';
 })
 export class ClipComponent implements OnInit {
   @ViewChild('videoPlayer', { static: true }) target?: ElementRef;
+  @ViewChild('videoTitle', { static: true }) videoTitle?: ElementRef;
   player?: videojs.Player;
   clip?: IClip;
 
@@ -27,6 +28,7 @@ export class ClipComponent implements OnInit {
         src: this.clip?.url,
         type: 'video/mp4',
       });
+      this.videoTitle?.nativeElement.scrollIntoView({ behavior: 'smooth' });
     });
 
   }
