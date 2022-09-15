@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { ClipService } from '../services/clip.service';
 
 @Component({
@@ -9,17 +9,23 @@ import { ClipService } from '../services/clip.service';
   providers: [DatePipe]
 })
 export class ClipsListComponent implements OnInit, OnDestroy {
-
-  constructor(public clipsService: ClipService) {
+  constructor(
+    public clipsService: ClipService,
+    private zone: NgZone,
+  ) {
     this.clipsService.getClips();
   }
 
   ngOnInit(): void {
-    window.addEventListener('scroll', this.handleScroll);
+    this.zone.runOutsideAngular(() => {
+      window.addEventListener('scroll', this.handleScroll);
+    });
   }
 
   ngOnDestroy(): void {
-    window.removeEventListener('scroll', this.handleScroll);
+    this.zone.runOutsideAngular(() => {
+      window.removeEventListener('scroll', this.handleScroll);
+    });
   }
 
   handleScroll = () => {
@@ -27,7 +33,9 @@ export class ClipsListComponent implements OnInit, OnDestroy {
     const { innerHeight } = window;
     const bottomOfWindow = Math.round(scrollTop) + innerHeight === offsetHeight;
     if (bottomOfWindow) {
-      this.clipsService.getClips();
+      this.zone.run(() => {
+        this.clipsService.getClips();
+      });
     }
   }
 
