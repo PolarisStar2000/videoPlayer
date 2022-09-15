@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import videojs from 'video.js';
 import IClip from '../models/clip.model';
@@ -17,16 +17,20 @@ export class ClipComponent implements OnInit {
   player?: videojs.Player;
   clip?: IClip;
 
-  constructor(public route: ActivatedRoute) { }
+  constructor(
+    public route: ActivatedRoute,
+    private zone: NgZone,
+  ) { }
 
   ngOnInit(): void {
-    this.player = videojs(this.target?.nativeElement);
-
     this.route.data.subscribe(data => {
       this.clip = data['clip'] as IClip;
-      this.player?.src({
-        src: this.clip?.url,
-        type: 'video/mp4',
+      this.zone.runOutsideAngular(() => {
+        this.player = videojs(this.target?.nativeElement);
+        this.player?.src({
+          src: this.clip?.url as string,
+          type: 'video/mp4',
+        });
       });
       this.videoTitle?.nativeElement.scrollIntoView({ behavior: 'smooth' });
     });
