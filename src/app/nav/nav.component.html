@@ -28,7 +28,7 @@
             </ul>
             <ul class="flex flex-row sm:ml-auto md:ml-auto">
                 <li *ngIf="(auth.isAuthenticated$ | async)">
-                    <a href="#" (click)="auth.logout($event)">Logout</a>
+                    <a class="logout-link" href="#" (click)="auth.logout($event)">Logout</a>
                 </li>
             </ul>
         </div>
