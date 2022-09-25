@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ClipService } from 'src/app/services/clip.service';
 
 import { EditComponent } from './edit.component';
 
@@ -8,9 +9,12 @@ describe('EditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditComponent ]
+      declarations: [EditComponent],
+      providers: [
+        { provide: ClipService, useValue: {} },
+      ],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
