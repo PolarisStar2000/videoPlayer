@@ -1,7 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NgxMaskModule } from 'ngx-mask';
 import { of } from 'rxjs';
 import { ClipService } from 'src/app/services/clip.service';
+import { InputComponent } from 'src/app/shared/input/input.component';
+import { ModalComponent } from 'src/app/shared/modal/modal.component';
+import { EditComponent } from '../edit/edit.component';
 import { ManageComponent } from './manage.component';
 
 describe('ManageComponent', () => {
@@ -18,7 +23,13 @@ describe('ManageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ManageComponent],
+      declarations: [
+        ManageComponent,
+        EditComponent,
+        ModalComponent,
+        InputComponent,
+      ],
+      imports: [ReactiveFormsModule, NgxMaskModule.forRoot()],
       providers: [
         { provide: ActivatedRoute, useValue: routeServiceStub },
         { provide: ClipService, useValue: clipsServiceStub },
