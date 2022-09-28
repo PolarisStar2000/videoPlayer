@@ -21,10 +21,10 @@
                             [routerLinkActiveOptions]="{exact: true}">Upload</a>
                     </li>
                 </ng-template>
-                <li>
+                <!-- <li>
                     <a class="px-2" routerLink="/about" routerLinkActive="text-stone-500"
                         [routerLinkActiveOptions]="{exact: true}">About</a>
-                </li>
+                </li> -->
             </ul>
             <ul class="flex flex-row sm:ml-auto md:ml-auto">
                 <li *ngIf="(auth.isAuthenticated$ | async)">
