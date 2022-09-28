@@ -1,0 +1,21 @@
+<!-- Edit Modal -->
+<app-modal modalID="deleteClip">
+    <p class="text-2xl font-bold">Delete video</p>
+
+    <app-alert *ngIf="showAlert" [color]="alertColor">
+        <p> {{ alertMsg }} </p>
+    </app-alert>
+
+    <div class="flex">
+        <span *ngIf="!isDeleted" class="flex-auto">Are you sure?</span>
+        <span *ngIf="isDeleted" class="flex-auto">Video deleted!</span>
+
+        <button *ngIf="!isDeleted" [disabled]="inSubmission" [ngClass]="{
+            'opacity-50': inSubmission
+            }" class="flex-auto py-2 border border-transparent 
+                shadow-sm rounded-md bg-red-500 hover:text-black
+                hover:bg-white text-white focus:outline-none" (click)="deleteVideo()">
+            Delete
+        </button>
+    </div>
+</app-modal>

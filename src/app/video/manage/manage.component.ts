@@ -50,11 +50,11 @@ export class ManageComponent implements OnInit {
     })
   }
 
-  openModal($event: Event, clip: IClip) {
+  openModal($event: Event, clip: IClip, modalType: string) {
     $event.preventDefault();
     this.activeClip = clip;
 
-    this.modal.toggleModal('editClip');
+    this.modal.toggleModal(`${modalType}Clip`);
   }
 
   update($event: IClip) {
@@ -65,12 +65,9 @@ export class ManageComponent implements OnInit {
     })
   }
 
-  deleteClip($event: Event, clip: IClip) {
-    $event.preventDefault();
-    this.clipService.deleteClip(clip);
-
+  delete($event: IClip) {
     this.clips.forEach((element, index) => {
-      if (element.docID === clip.docID) {
+      if (element.docID === $event.docID) {
         this.clips.splice(index, 1);
       }
     })
