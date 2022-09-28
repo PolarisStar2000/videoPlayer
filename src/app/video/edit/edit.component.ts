@@ -73,5 +73,9 @@ export class EditComponent implements OnInit, OnChanges, OnDestroy {
     this.inSubmission = false;
     this.alertColor = 'emerald';
     this.alertMsg = 'Success';
+    setTimeout(() => {
+      this.showAlert = false;
+      this.modal.toggleModal('editClip');
+    }, 1000);
   }
 }
