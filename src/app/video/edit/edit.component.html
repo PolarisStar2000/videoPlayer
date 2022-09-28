@@ -7,17 +7,16 @@
     </app-alert>
 
     <!-- Form -->
-    <form [formGroup]="editForm" (ngSubmit)="submit()">
+    <form [formGroup]="editForm" (ngSubmit)="updateVideo()">
         <!-- Title -->
         <div class="mt-4">
             <label class="block text-xl mb-4">Title</label>
             <app-input [control]="title" placeholder="Enter title"></app-input>
         </div>
 
-        <div class="mt-4 text-right">
+        <div *ngIf="!isEdited" class="mt-4 text-right">
             <button [disabled]="inSubmission" [ngClass]="{
-                'opacity-50': inSubmission,
-                'hover:bg-white': !inSubmission
+                'opacity-50': inSubmission
                 }" type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent 
                     shadow-sm rounded-md bg-stone-900 hover:text-black
                     hover:bg-white text-white focus:outline-none">
