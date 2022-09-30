@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { AuthService } from '../services/auth.service';
@@ -33,16 +32,5 @@ describe('NavComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should logout', () => {
-    const service = TestBed.inject(AuthService);
-    const logoutLink = fixture.debugElement.query(By.css('.logout-link'));
-
-    logoutLink.triggerEventHandler('click');
-
-    expect(logoutLink).withContext('Not logged in').toBeTruthy();
-    expect(service.logout)
-      .withContext('Could not click logout link').toHaveBeenCalledTimes(1);
   });
 });

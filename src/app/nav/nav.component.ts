@@ -16,10 +16,10 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openModal($event: Event) {
+  openModal($event: Event, modalType: string) {
     $event.preventDefault();
 
-    this.modal.toggleModal('auth');
+    this.modal.toggleModal(`${modalType}`);
   }
 
 
