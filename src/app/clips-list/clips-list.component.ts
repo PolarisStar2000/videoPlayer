@@ -26,6 +26,7 @@ export class ClipsListComponent implements OnInit, OnDestroy {
     this.zone.runOutsideAngular(() => {
       window.removeEventListener('scroll', this.handleScroll);
     });
+    this.clipsService.pageClips = [];
   }
 
   handleScroll = () => {
