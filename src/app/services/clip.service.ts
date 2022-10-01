@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference, QuerySnapshot } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
-import { of, map, switchMap, BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { of, map, switchMap, BehaviorSubject, combineLatest, Observable, lastValueFrom } from 'rxjs';
 import IClip from '../models/clip.model';
 
 @Injectable({
@@ -78,10 +78,8 @@ export class ClipService implements Resolve<IClip | null> {
 
     if (length) {
       const lastDocID = this.pageClips[length - 1].docID;
-      const lastDoc = await this.clipsCollection
-        .doc(lastDocID)
-        .get()
-        .toPromise();
+      const lastDoc = await lastValueFrom(this.clipsCollection
+        .doc(lastDocID).get());
       query = query.startAfter(lastDoc);
     }
 
